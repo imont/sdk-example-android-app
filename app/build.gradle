@@ -1,0 +1,113 @@
+plugins {
+    id 'net.researchgate.release' version '2.6.0'
+}
+
+release {
+    git {
+        requireBranch = 'release-(.*)|hotfix-(.*)'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "io.imont.android.sdkdemo"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode getAndroidVersionCode() as int
+        versionName version
+
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/services/com.fasterxml.jackson.core.JsonFactory'
+        exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
+        exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'io.imont.lion:lion-android:0.7.1'
+
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    // FIXME big dependencies
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
+    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.5.4') {
+        exclude group: 'org.yaml', module: 'snakeyaml'
+    }
+
+    // Firebase for push notifications
+    compile 'com.google.firebase:firebase-messaging:9.4.0'
+
+    // Authentication with google
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
+
+    // Unirest does not work in android
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+
+    // IJKPlayer and related
+    compile(name:'ijkplayer-arm64-release', ext:'aar') // Nexus 5x and (probably?) most newish phones
+    //compile(name:'ijkplayer-armv7a-release', ext:'aar') // older phones
+    compile(name:'ijkplayer-x86-release', ext:'aar') // emulator
+    compile(name:'ijkplayer-java-release', ext:'aar')
+
+    // IJK Had to be custom built because it does not come with RTSP support by default
+    compile ('org.xdty.media:mediaplayer:0.0.1') {
+        exclude module: 'ijkplayer-arm64'
+        exclude module: 'ijkplayer-armv7a'
+        exclude module: 'ijkplayer-x86'
+        exclude module: 'ijkplayer-java'
+    }
+
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'com.github.tony19:logback-android-core:1.1.1-5'
+    compile('com.github.tony19:logback-android-classic:1.1.1-5') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+
+    testCompile 'junit:junit:4.12'
+
+    androidTestCompile 'com.android.support:support-annotations:25.0.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // Optional -- Hamcrest library
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    androidTestCompile 'com.jayway.awaitility:awaitility:1.7.0'
+}
+
+apply from: '../artifacts.gradle'
+
+def getAndroidVersionCode() {
+    def versioncodeProperty = "android.version.code"
+    if (hasProperty(versioncodeProperty)) {
+        return getProperty(versioncodeProperty)
+    }
+    return Integer.MAX_VALUE // return MAX_VALUE here so that Hockey doesn't offer us upgrades on debug builds
+}

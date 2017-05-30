@@ -1,0 +1,24 @@
+<configuration>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <appender name="logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+        <tagEncoder>
+            <pattern>%logger{12}</pattern>
+        </tagEncoder>
+        <encoder>
+            <pattern>[%-15thread] %msg</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="io.imont.ferret" level="DEBUG" />
+    <logger name="io.imont.mole" level="DEBUG" />
+    <logger name="io.imont.lion" level="DEBUG" />
+    <logger name="io.imont.android.sdkdemo" level="DEBUG" />
+    <logger name="org.ice4j" level="WARN" />
+
+    <root level="INFO">
+        <appender-ref ref="logcat" />
+    </root>
+</configuration>

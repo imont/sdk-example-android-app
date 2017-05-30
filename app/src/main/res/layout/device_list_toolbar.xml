@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/connection_progress" />
+    <TextView
+            android:text="Connecting..."
+            android:textColor="@color/colorAccent"
+            android:layout_toRightOf="@+id/connection_progress"
+            android:layout_marginLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/connection_progress_text"/>
+
+</RelativeLayout>

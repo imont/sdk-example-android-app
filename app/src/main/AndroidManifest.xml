@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="io.imont.android.sdkdemo">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+            android:name="android.support.multidex.MultiDexApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/imont_circle"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="io.imont.android.sdkdemo.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/share"/>
+        </provider>
+
+        <activity
+                android:name=".DevicesActivity"
+                android:label="@string/title_activity_devices"
+                android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- &lt;!&ndash;<action android:name="android.intent.action.MAIN"/>&ndash;&gt; -->
+
+
+            <!-- &lt;!&ndash;<category android:name="android.intent.category.LAUNCHER"/>&ndash;&gt; -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+                android:name=".HelloActivity"
+                android:label="@string/title_activity_hello"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".ScanNetworkActivity"
+                android:label="@string/title_activity_scan_network"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".DeviceActivity"
+                android:label="@string/title_activity_device"
+                android:launchMode="singleTop"
+                android:parentActivityName=".DevicesActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DevicesActivity"/>
+        </activity>
+        <activity
+                android:name=".EventActivity"
+                android:label="@string/title_event_details"
+                android:parentActivityName=".DeviceActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DeviceActivity"/>
+        </activity>
+        <activity
+                android:name=".VideoActivity"
+                android:label="@string/title_video"
+                android:parentActivityName=".DeviceActivity"
+                android:screenOrientation="landscape"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DeviceActivity"/>
+        </activity>
+        <activity
+                android:name=".EventLogActivity"
+                android:label="@string/title_event_log"
+                android:parentActivityName=".DevicesActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DevicesActivity"/>
+        </activity>
+        <activity
+                android:name=".ConnectivityActivity"
+                android:label="@string/title_activity_connectivity"
+                android:parentActivityName=".DevicesActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DevicesActivity"/>
+        </activity>
+
+        <!-- [START firebase_service] -->
+        <service android:name=".firebase.IMONTFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name=".firebase.IMONTFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
+
+        <receiver android:name=".handlers.ButtonPushedNotificationHandler$OnOffListener"/>
+
+        <activity
+                android:name=".FindDevicesActivity"
+                android:label="@string/title_activity_find_devices"
+                android:parentActivityName=".DeviceActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DeviceActivity"/>
+        </activity>
+        <activity
+                android:name=".AddDeviceActivity"
+                android:label="@string/title_activity_add_device"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".RulesActivity"
+                android:label="@string/title_activity_rules"
+                android:parentActivityName=".DeviceActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DeviceActivity"/>
+        </activity>
+        <activity
+                android:name=".RuleActivity"
+                android:label="@string/title_activity_rule"
+                android:parentActivityName=".RulesActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".RulesActivity"/>
+        </activity>
+        <activity
+                android:name=".AttributeChartActivity"
+                android:label="@string/title_activity_attribute_chart"
+                android:parentActivityName=".DeviceActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".DeviceActivity"/>
+        </activity>
+    </application>
+
+</manifest>

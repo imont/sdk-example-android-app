@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content_add_device"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/activity_add_device"
+        tools:context="io.imont.android.sdkdemo.AddDeviceActivity">
+
+    <TextView
+            android:text="@string/add_device_explanation_text"
+            android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="50dp" />
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/add_address"
+            android:layout_below="@+id/textView" android:layout_alignParentStart="true"
+            android:layout_marginTop="52dp" android:hint="Address (i.e. IP)"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_below="@+id/add_address" android:layout_alignParentStart="true" android:id="@+id/add_port"
+            android:hint="Port"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_below="@+id/add_port" android:layout_alignParentStart="true" android:layout_marginTop="22dp"
+            android:id="@+id/add_username" android:hint="Username (if any)"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_below="@+id/add_username" android:layout_alignEnd="@+id/add_username"
+            android:layout_marginTop="12dp" android:id="@+id/add_password" android:hint="Password (if any)"/>
+    <Button
+            android:text="Add Device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_below="@+id/add_password"
+            android:layout_centerHorizontal="true" android:layout_marginTop="52dp" android:id="@+id/add_button"/>
+</RelativeLayout>

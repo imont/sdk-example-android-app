@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="130dp"
+    android:padding="6dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:id="@+id/conn_event_time" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="15sp"
+        />
+
+    <TextView android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:text="Peer"
+              android:id="@+id/conn_event_peer"
+              android:textSize="15sp"
+              android:layout_alignParentTop="true" android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event"
+        android:id="@+id/conn_event_name"
+        android:textSize="18sp"
+        android:layout_centerVertical="true" android:layout_alignParentStart="true"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:text="Description"
+              android:id="@+id/conn_event_description"
+              android:textSize="14sp"
+              android:scrollHorizontally="true"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentStart="true"/>
+
+</RelativeLayout>

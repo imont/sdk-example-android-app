@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/activity_attribute_chart"
+        tools:context="io.imont.android.sdkdemo.AttributeChartActivity">
+
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+
+                 android:id="@+id/buttons">
+        <TableRow android:gravity="center_horizontal">
+            <Button
+                    android:text="Last Hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/last_hour_btn"/>
+
+            <Button
+                    android:text="Last Day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/last_day_btn"/>
+
+            <Button
+                    android:text="Last Month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/last_month_btn"/>
+        </TableRow>
+    </TableLayout>
+
+
+
+    <lecho.lib.hellocharts.view.LineChartView
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_below="@id/buttons"
+    />
+
+</RelativeLayout>

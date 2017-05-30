@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dip">
+
+    <TextView
+            android:text="Rule Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/rule_name" android:textAllCaps="true"/>
+
+    <TextView
+            android:text="Rule Conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rule_name"
+            android:layout_alignParentStart="true"
+            android:id="@+id/rule_conditions"/>
+
+    <TextView
+            android:text="Rule Actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="40"
+            android:ellipsize="end"
+            android:layout_below="@id/rule_conditions"
+            android:id="@+id/rule_actions"
+            android:textStyle="bold" android:textAllCaps="true"/>
+
+</RelativeLayout>

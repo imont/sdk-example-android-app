@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">IMONT SDK Example</string>
+    <string name="action_conn_events">Connectivity Log</string>
+    <string name="title_activity_hello">IMONT SDK Example</string>
+    <string name="title_activity_scan_network">Scan Network</string>
+    <string name="title_activity_devices">My Devices</string>
+    <string name="existing_network">Existing Network</string>
+    <string name="new_network">New Network</string>
+    <string name="refresh">Refresh</string>
+    <string name="title_activity_device">Device Information</string>
+    <string name="title_event_details">Event Details</string>
+    <string name="title_video">Video</string>
+    <string name="title_event_log">Event Log</string>
+    <string name="title_activity_connectivity">Connectivity Log</string>
+    <string name="stream_high_quality">Stream High Quality</string>
+    <string name="stream_low_quality">Stream Low Quality</string>
+    <string name="imont_max_cloud">IMONT MAX Cloud</string>
+    <string name="imont_cloud_integration">
+        IMONT Cloud integration.
+        \n\nPlease sign in or register for IMONT MAX Cloud.
+        Enabling the cloud is an optional operation, but doing so will allow you to
+        receive push notifications, backup or restore your network and certain other features.
+        Please sign in with Google or click "Opt Out" if you do not wish to use IMONT MAX Cloud.
+    </string>
+    <string name="imont_cloud_enabled">
+        IMONT MAX Cloud enabled.
+        \n\nWelcome %s.
+        \n\nPress the back button on your phone to return.
+    </string>
+    <string name="cloud_support">Cloud support</string>
+    <string name="find_bridged_devices">Find Bridged Devices</string>
+    <string name="title_activity_find_devices">Find Bridged Devices</string>
+    <string name="no_bridged_devices_found">No bridged devices found</string>
+    <string name="title_activity_add_device">Add a device</string>
+    <string name="add_device_explanation_text">If you know the details of the device you want to add, please enter them
+        here
+    </string>
+    <string name="add_specific_device">Add specific device</string>
+    <string name="remove_device">Remove device</string>
+    <string name="hub_upgrade_msg">Your hub appears to be running an old firmware image, %1$s. Would you like to upgrade
+        to %2$s now?
+    </string>
+    <string name="hub_firmware_up_to_date">Hooray, all your hub(s) are already running the latest firmware.</string>
+    <string name="add_new_peer">Add new peer</string>
+    <string name="retrieve_telemetry">Retrieve telemetry</string>
+    <string name="upgrade_to_version">Upgrade to version...</string>
+    <string name="title_activity_hub_upgrade">Upgrade Hub</string>
+    <string name="rules">Rules</string>
+    <string name="title_activity_rules">Rules</string>
+    <string name="title_activity_rule">Edit Rule</string>
+    <string name="title_activity_attribute_chart">Attributes</string>
+    <string name="name">Name</string>
+    <string name="conditions_met">conditions are met:</string>
+    <string name="if_txt">If</string>
+    <string name="save">Save</string>
+    <string name="click_to_add_condition">Click + to add condition</string>
+    <string name="perform_these_actions">Perform these actions:</string>
+    <string name="click_to_add_action">Click + to add action</string>
+    <string-array name="rule_spinner">
+        <item>All</item>
+        <item>Any</item>
+    </string-array>
+    <string-array name="rule_condition_comparison_spinner">
+        <item>less than</item>
+        <item>more than</item>
+        <item>equals</item>
+    </string-array>
+
+    <!-- Rule conditions here -->
+
+    <string name="cond_any_button">Any button</string>
+    <string name="cond_any_contact_sensor">Any contact sensor</string>
+    <string name="cond_any_device">Any device</string>
+    <string name="cond_any_motion_sensor">Any motion sensor</string>
+    <string name="cond_specific_button">Button TODO</string>
+    <string name="cond_specific_device">Device TODO</string>
+    <string name="cond_time_range">Time is</string>
+    <string name="cond_time_is_between">between</string>
+
+    <string name="cond_device_absent">goes offline</string>
+    <string name="cond_device_present">comes online</string>
+    <string name="cond_button_pushed">is pushed</string>
+    <string name="cond_contact_sensor_closed">is closed</string>
+    <string name="cond_contact_sensor_opened">is opened</string>
+    <string name="cond_motion_detected">detects motion</string>
+    <string name="cond_device_temperature">temperature</string>
+
+    <string name="action_show_android_notification">notify me</string>
+    <string name="action_builtin_action_raise_event">raise another event</string>
+    <string name="action_builtin_action_toggle_switch">toggle a switch</string>
+</resources>

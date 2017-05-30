@@ -1,0 +1,45 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="io.imont.android.sdkdemo.DevicesActivity">
+    <item
+            android:id="@+id/action_hub_rules"
+            android:orderInCategory="100"
+            android:title="@string/rules"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_stream_hi"
+            android:orderInCategory="100"
+            android:title="@string/stream_high_quality"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_stream_lo"
+            android:orderInCategory="100"
+            android:title="@string/stream_low_quality"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_find_devices"
+            android:orderInCategory="100"
+            android:title="@string/find_bridged_devices"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_add_device"
+            android:orderInCategory="100"
+            android:title="@string/add_specific_device"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_remove_device"
+            android:orderInCategory="100"
+            android:title="@string/remove_device"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_get_telemetry"
+            android:orderInCategory="100"
+            android:title="@string/retrieve_telemetry"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/action_hub_upgrade"
+            android:orderInCategory="100"
+            android:title="@string/upgrade_to_version"
+            app:showAsAction="never" />
+</menu>
