@@ -30,7 +30,7 @@ allprojects {
                 username imontRepoUser
                 password imontRepoPassword
             }
-            url "https://repo.imont.io/repository/imont-all/"
+            url "https://repo.imont.io/repository/imont-public/"
         }
         mavenCentral()
         jcenter()
