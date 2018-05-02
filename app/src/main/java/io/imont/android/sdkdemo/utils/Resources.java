@@ -1,8 +1,7 @@
 /*
- * Copyright 2017 IMONT Technologies Limited
- * Created by romanas on 05/05/2017.
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
-
 package io.imont.android.sdkdemo.utils;
 
 import android.content.Context;

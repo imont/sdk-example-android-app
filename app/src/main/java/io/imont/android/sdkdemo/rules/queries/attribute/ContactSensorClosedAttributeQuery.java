@@ -1,6 +1,6 @@
 /*
- * Copyright 2017 IMONT Technologies Limited
- * Created by romanas on 27/04/2017.
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo.rules.queries.attribute;
 
@@ -39,7 +39,7 @@ public class ContactSensorClosedAttributeQuery extends AttributeQuery {
                 new RuleConditionV1().withCondition(
                         new Condition().withObject("event.value")
                                 .withOperator(Condition.Operator.EQ)
-                                .withValue(OpenClosed.OpenClosedValues.CLOSED.toString())
+                                .withValue(OpenClosed.OpenClosedValue.CLOSED.toString())
 
                 )));
     }

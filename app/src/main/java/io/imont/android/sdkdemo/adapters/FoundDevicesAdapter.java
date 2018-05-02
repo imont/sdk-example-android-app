@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 IMONT Technologies
+ * Copyright (C) 2018 IMONT Technologies Limited
  *
  */
 package io.imont.android.sdkdemo.adapters;

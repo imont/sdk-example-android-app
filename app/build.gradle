@@ -46,7 +46,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'io.imont.lion:lion-android:0.7.1'
+    compile 'io.imont.lion:lion-android:0.18.4'
 
     compile 'io.reactivex:rxandroid:1.2.1'
 

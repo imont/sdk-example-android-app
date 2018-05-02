@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
+ */
 package io.imont.android.sdkdemo.handlers;
 
 import android.app.Notification;
@@ -19,6 +23,8 @@ import io.imont.mole.MoleException;
 import io.imont.mole.client.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.imont.mole.client.GlobalEntityId;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -111,12 +117,12 @@ public class ButtonPushedNotificationHandler {
                     try {
 
                         MoleClient mc = lion.getMole();
-                        List<String> devices = mc.getAllEntityIds();
-                        for (String d : devices) {
-                            Event ev = mc.getState(d, OnOff.ON_OFF_EVENT.getFQEventKey());
+                        List<GlobalEntityId> devices = mc.getAllEntities();
+                        for (GlobalEntityId entityId : devices) {
+                            Event ev = mc.getState(entityId, OnOff.ON_OFF_EVENT.getFQEventKey());
                             if (ev != null) {
                                 String targetValue = invertValue(ev.getValue());
-                                lion.getMole().raiseEvent(ev.getEntityId(), OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
+                                lion.getMole().raiseEvent(entityId, OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
                                         .subscribe();
                             }
                         }

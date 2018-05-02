@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
+ */
 package io.imont.android.sdkdemo;
 
 import android.database.Cursor;
@@ -14,6 +18,7 @@ import io.imont.lion.Lion;
 import io.imont.lion.android.AndroidLionLoader;
 import io.imont.mole.MoleException;
 import io.imont.mole.client.Event;
+import io.imont.mole.client.GlobalEntityId;
 import lecho.lib.hellocharts.model.*;
 import lecho.lib.hellocharts.view.LineChartView;
 import rx.Observable;
@@ -33,8 +38,9 @@ public class AttributeChartActivity extends AppCompatActivity {
     private static final int MAX_PAGES = 50;
     private static final int PAGE_SIZE = 100;
 
-    private String entityId;
     private String eventKey;
+
+    private GlobalEntityId globalEntityId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +52,9 @@ public class AttributeChartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Bundle params = getIntent().getExtras();
-        entityId = params.getString("entityId");
         eventKey = params.getString("eventKey");
+
+        globalEntityId = (GlobalEntityId) params.get("globalEntityId");
 
         final Button lastHourBtn = (Button) findViewById(R.id.last_hour_btn);
         final Button lastDayBtn = (Button) findViewById(R.id.last_day_btn);
@@ -84,7 +91,7 @@ public class AttributeChartActivity extends AppCompatActivity {
         bar.show();
 
         final AtomicBoolean status = new AtomicBoolean(false);
-        latestSequence(entityId, eventKey)
+        latestSequence(globalEntityId, eventKey)
                 .subscribeOn(Schedulers.io())
                 .flatMap(new Func1<Long, Observable<Event>>() {
             @Override
@@ -100,7 +107,7 @@ public class AttributeChartActivity extends AppCompatActivity {
                         if (from < 0) {
                             from = 0;
                         }
-                        return fetch(entityId, eventKey, from, to);
+                        return fetch(globalEntityId, eventKey, from, to);
                     }
                 });
             }
@@ -111,7 +118,7 @@ public class AttributeChartActivity extends AppCompatActivity {
         );
     }
 
-    private Observable<Long> latestSequence(final String entityId, final String eventKey) {
+    private Observable<Long> latestSequence(final GlobalEntityId entityId, final String eventKey) {
         return AndroidLionLoader.getLion(this).map(new Func1<Lion, Long>() {
             @Override
             public Long call(final Lion lion) {
@@ -128,12 +135,12 @@ public class AttributeChartActivity extends AppCompatActivity {
         });
     }
 
-    private Observable<Event> fetch(final String entityId, final String eventKey, final long from, final long to) {
+    private Observable<Event> fetch(final GlobalEntityId entityId, final String eventKey, final long from, final long to) {
         return AndroidLionLoader.getLion(this).flatMap(new Func1<Lion, Observable<Event>>() {
             @Override
             public Observable<Event> call(final Lion lion) {
                 try {
-                    return Observable.from(lion.getMole().getHistoryForEvent(entityId, eventKey, from, to));
+                    return Observable.from(lion.getMole().getHistoryForEvent(entityId.getEntityId(), eventKey, from, to));
                 } catch (MoleException e) {
                     throw new RuntimeException(e);
                 }
