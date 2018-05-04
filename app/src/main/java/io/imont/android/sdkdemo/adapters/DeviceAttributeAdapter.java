@@ -1,6 +1,6 @@
-/**
- * Copyright 2016 IMONT Technologies
- * Created by romanas on 27/06/2016.
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo.adapters;
 
@@ -15,14 +15,10 @@ import io.imont.cairo.EventKey;
 import io.imont.cairo.EventKeyRegistry;
 import io.imont.cairo.events.OnOff;
 import io.imont.mole.client.Event;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class DeviceAttributeAdapter extends ArrayAdapter<Event> {
-
-    private static final Logger logger = LoggerFactory.getLogger(DeviceAttributeAdapter.class);
 
     private final List<Event> attributes;
 

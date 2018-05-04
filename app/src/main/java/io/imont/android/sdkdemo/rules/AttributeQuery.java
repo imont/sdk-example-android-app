@@ -1,6 +1,6 @@
 /*
- * Copyright 2017 IMONT Technologies
- * Created by romanas on 26/04/2017.
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo.rules;
 

@@ -1,6 +1,6 @@
-/**
- * Copyright 2016 IMONT Technologies
- * Created by romanas on 25/08/2016.
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo.utils;
 

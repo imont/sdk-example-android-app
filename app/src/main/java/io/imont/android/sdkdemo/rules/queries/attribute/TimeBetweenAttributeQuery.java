@@ -1,7 +1,8 @@
-package io.imont.android.sdkdemo.rules.queries.attribute;
 /*
- * Copyright 2017 IMONT Technologies Limited
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
+package io.imont.android.sdkdemo.rules.queries.attribute;
 
 import io.imont.android.sdkdemo.rules.AttributeQuery;
 import io.imont.lion.rules.schema.Condition;

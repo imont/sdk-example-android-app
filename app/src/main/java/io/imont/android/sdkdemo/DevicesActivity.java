@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
+ */
 package io.imont.android.sdkdemo;
 
 import android.app.ProgressDialog;
@@ -65,7 +69,8 @@ public class DevicesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
                 Device item = adapter.getItem(position);
-                deviceActivityIntent.putExtra("itemId", item.getId().getEntityId());
+                deviceActivityIntent.putExtra(DeviceActivity.DEVICE_ID_PARAM, item.getId().getEntityId());
+                deviceActivityIntent.putExtra(DeviceActivity.PEER_ID_PARAM, item.getId().getPeerId());
                 startActivity(deviceActivityIntent);
             }
         });
@@ -166,17 +171,6 @@ public class DevicesActivity extends AppCompatActivity {
 
     private void refreshConnectionInformation(final DeviceListAdapter adapter) {
         adapter.refreshConnectionInfo();
-    }
-
-    private Map<String, String> getHubVersions(final MoleClient client) throws MoleException {
-        Map<String, String> res = new HashMap<>();
-        for (String deviceId : client.getAllEntityIds()) {  //TODO Once we have upgrades working, we will need to check for any upgrade events as well.
-            Event deviceAddedEvent = client.getState(deviceId, Hardware.DEVICE_ADDED_EVENT.getFQEventKey());
-            if (deviceAddedEvent != null && deviceAddedEvent.getValue().equals("HUB")) {
-                res.put(deviceId, deviceAddedEvent.getMetadata().get(Hardware.DEVICE_ADDED_FIRMWARE_VERSION_META.getMetaKey()));
-            }
-        }
-        return res;
     }
 
     @Override

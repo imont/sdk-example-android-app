@@ -1,8 +1,8 @@
-package io.imont.android.sdkdemo.rules.actions;
 /*
- * Copyright 2017 IMONT Technologies Limited
- * Created by romanas on 27/04/2017.
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
+package io.imont.android.sdkdemo.rules.actions;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -23,6 +23,7 @@ import io.imont.lion.rules.Rule;
 import io.imont.mole.MoleClient;
 import io.imont.mole.MoleException;
 import io.imont.mole.client.Event;
+import io.imont.mole.client.GlobalEntityId;
 import rx.functions.Action1;
 
 import java.util.List;
@@ -99,12 +100,12 @@ public class ShowNotificationAction implements Action {
                     try {
 
                         MoleClient mc = lion.getMole();
-                        List<String> devices = mc.getAllEntityIds();
-                        for (String d : devices) {
+                        List<GlobalEntityId> devices = mc.getAllEntities();
+                        for (GlobalEntityId d : devices) {
                             Event ev = mc.getState(d, OnOff.ON_OFF_EVENT.getFQEventKey());
                             if (ev != null) {
                                 String targetValue = invertValue(ev.getValue());
-                                lion.getMole().raiseEvent(ev.getEntityId(), OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
+                                lion.getMole().raiseEvent(d, OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
                                         .subscribe();
                             }
                         }

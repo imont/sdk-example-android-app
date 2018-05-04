@@ -1,6 +1,6 @@
-/**
- * Copyright 2016 IMONT Technologies
- * Created by romanas on 22/07/2016.
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo;
 
@@ -31,6 +31,8 @@ import io.imont.mole.MoleException;
 import io.imont.mole.client.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.imont.mole.client.GlobalEntityId;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -103,8 +105,8 @@ public class VideoActivity extends AppCompatActivity {
                 public void call(final Lion lion) {
                     try {
                         MoleClient mc = lion.getMole();
-                        List<String> devices = mc.getAllEntityIds();
-                        for (String d : devices) {
+                        List<GlobalEntityId> devices = mc.getAllEntities();
+                        for (GlobalEntityId d : devices) {
                             Event evt = mc.getState(d, Video.VIDEO_STREAM_AVAILABLE.getFQEventKey());
                             if (evt != null) {
                                 final Event videoEvent = mc.getState(d, Video.VIDEO_STREAM_AVAILABLE.getFQEventKey());

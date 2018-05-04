@@ -1,6 +1,6 @@
-/**
- * Copyright 2016 IMONT Technologies
- * Created by romanas on 08/12/2016.
+/*
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
 package io.imont.android.sdkdemo.video;
 
@@ -20,6 +20,7 @@ import io.imont.lion.api.Device;
 import io.imont.lion.api.DeviceId;
 import io.imont.mole.client.Event;
 import io.imont.mole.client.EventResult;
+import io.imont.mole.client.GlobalEntityId;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import tv.danmaku.ijk.mediaplayer.media.AndroidMediaController;
@@ -84,7 +85,8 @@ public class IMONTMediaController extends AndroidMediaController {
                         Event ev = entry.getValue().getLatestEvent(OnOff.ON_OFF_EVENT.getFQEventKey());
                         if (ev != null) {
                             String targetValue = invertValue(ev.getValue());
-                            lion.getMole().raiseEvent(ev.getEntityId(), OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
+                            GlobalEntityId id = GlobalEntityId.with(ev.getId().getPeerId(), ev.getEntityId());
+                            lion.getMole().raiseEvent(id, OnOff.ON_OFF_EVENT.getFQEventKey(), 0, targetValue)
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(new Action1<EventResult>() {
                                         @Override

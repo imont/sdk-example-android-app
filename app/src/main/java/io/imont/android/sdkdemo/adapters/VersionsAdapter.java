@@ -1,7 +1,7 @@
 /*
- * Copyright 2017 IMONT Technologies Limited
+ * Copyright (C) 2018 IMONT Technologies Limited
+ *
  */
-
 package io.imont.android.sdkdemo.adapters;
 
 import android.content.Context;
