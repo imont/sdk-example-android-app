@@ -210,7 +210,7 @@ public class DeviceActivity extends AppCompatActivity {
                         }
                     });
                 } else if (stateEvent.getMetadata().size() > 0) {
-                    metadataActivity.putExtra("metadata", (HashMap) stateEvent.getMetadata());
+                    metadataActivity.putExtra("metadata", new HashMap<>(stateEvent.getMetadata())); // has to be serializable
                     metadataActivity.putExtra("itemId", globalEntityId.getEntityId());
                     startActivity(metadataActivity);
                 }
@@ -284,26 +284,27 @@ public class DeviceActivity extends AppCompatActivity {
             @Override
             public void call(final Lion lion) {
                 try {
-                    boolean isRouter = false;
+                    boolean isPeer = false;
                     boolean isCamera = false;
                     GlobalEntityId globalEntityId = new GlobalEntityId(peerId, deviceIdString);
 
-                    Event hwEvt = lion.getMole().getState(globalEntityId, Hardware.DEVICE_ADDED_EVENT.getFQEventKey());
-                    if (Objects.equals(globalEntityId, hwEvt.getId().getPeerId())) {
-                        // this is a router
-                        isRouter = true;
-                    } else {
-                        Event evt = lion.getMole().getState(globalEntityId, Video.VIDEO_STREAM_AVAILABLE.getFQEventKey());
-                        if (evt != null) {
-                            isCamera = true;
-                        }
+                    Device d = lion.getAllDevices().get(globalEntityId);
+                    if (d.getType() == Device.Type.PEER) {
+                        // this is a peer device
+                        isPeer = true;
                     }
-                    if (!isRouter) {
+
+                    if (!isPeer) {
                         menu.findItem(R.id.action_add_device).setVisible(false);
                         menu.findItem(R.id.action_find_devices).setVisible(false);
                         menu.findItem(R.id.action_get_telemetry).setVisible(false);
                         menu.findItem(R.id.action_hub_upgrade).setVisible(false);
                         menu.findItem(R.id.action_hub_rules).setVisible(false);
+                    }
+
+                    Event evt = lion.getMole().getState(globalEntityId, Video.VIDEO_STREAM_AVAILABLE.getFQEventKey());
+                    if (evt != null) {
+                        isCamera = true;
                     }
 
                     if (!isCamera) {
